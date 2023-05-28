@@ -1,0 +1,11 @@
+{
+  "user_create_success": "User created",
+  "firstName_null": "First name cannot be null",
+  "firstName_size": "First name must be greater than 3 and less than 33",
+  "lastName_null": "Last name cannot be null",
+  "lastName_size": "Last name must be greater than 3 and less than 33",
+  "email_null": "Email cannot be null",
+  "email_invalid": "Email is not valid",
+  "password_null": "Password cannot be null",
+  "password_size": "Email must be greater than 3 and less than 33"
+}
