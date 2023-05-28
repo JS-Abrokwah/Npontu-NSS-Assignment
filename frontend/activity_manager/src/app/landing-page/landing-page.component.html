@@ -1,0 +1,232 @@
+<div class="landingBody">
+  <div class="container">
+    <div class="text-center text-light mt-5">
+      <h3>
+        Welcome to...<br /><span class="fs-1 fst-italic fw-bold"
+          >My Activity Manager</span
+        >
+      </h3>
+      <p class="fs-4 text-success">Manage your team work here...</p>
+    </div>
+    <div class="mt-5 row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div class="card text-center">
+          <div class="card-body">
+            <div class="card-title">
+              <p class="fs-5 fw-bold text-success">Login</p>
+            </div>
+            <hr class="text-success" />
+            <div class="my-5">
+              {{ loginForm.value | json }}
+              <form [formGroup]="loginForm">
+                <div class="mb-3 row">
+                  <label for="email" class="form-label text-success col-4"
+                    >Email:</label
+                  >
+                  <div class="col-8">
+                    <input
+                      [class.is-invalid]="
+                        getEmail?.invalid && getEmail?.touched
+                      "
+                      type="text"
+                      class="form-control form-control-sm"
+                      formControlName="email"
+                    />
+                    <div
+                      *ngIf="getEmail?.invalid && getEmail?.touched"
+                      class="text-center"
+                    >
+                      <small class="text-danger"
+                        >Email is incorrect or not provided</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3 row">
+                  <label for="email" class="form-label text-success col-4"
+                    >Password:</label
+                  >
+                  <div class="col-8">
+                    <input
+                      [class.is-invalid]="
+                        getPassword?.invalid && getPassword?.touched
+                      "
+                      type="password"
+                      class="form-control form-control-sm"
+                      formControlName="password"
+                    />
+                    <div
+                      *ngIf="getPassword?.invalid && getPassword?.touched"
+                      class="text-center"
+                    >
+                      <small class="text-danger">Password is required</small>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div class="text-center">
+                <div class="btn btn-success px-5 fst-italic rounded-pill">
+                  Log In
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <p class="text-muted fst-italic fs-6">Don't have an account?</p>
+              <div
+                class="btn btn-secondary px-5 fst-italic rounded"
+                (click)="open(content)"
+              >
+                Sign Up
+              </div>
+            </div>
+            <!--  -->
+            <!-- Register Modal -->
+            <!--  -->
+            <ng-template #content let-modal>
+              <div class="modal-header">
+                <h4 class="text-success" id="modal-basic-title">Sign Up</h4>
+                <button
+                  type="button"
+                  class="btn-close"
+                  aria-label="Close"
+                  (click)="modal.dismiss('Cross click')"
+                ></button>
+              </div>
+              {{ registerForm.value | json }}
+              <div class="modal-body">
+                <form [formGroup]="registerForm">
+                  <div class="mt-3 row">
+                    <label
+                      for="firstName"
+                      class="form-label text-success text-center col-3"
+                      >First Name:</label
+                    >
+                    <div class="col-9">
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        [class.is-invalid]="
+                          firstName?.invalid && firstName?.touched
+                        "
+                        formControlName="firstName"
+                      />
+                      <div
+                        *ngIf="firstName?.invalid && firstName?.touched"
+                        class="text-center"
+                      >
+                        <small class="text-danger"
+                          >First name is required</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-3 row">
+                    <label
+                      for="lastName"
+                      class="form-label text-success text-center col-3"
+                      >Last Name:</label
+                    >
+                    <div class="col-9">
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        [class.is-invalid]="
+                          lastName?.invalid && lastName?.touched
+                        "
+                        formControlName="lastName"
+                      />
+                      <div
+                        *ngIf="lastName?.invalid && lastName?.touched"
+                        class="text-center"
+                      >
+                        <small class="text-danger">Last name is required</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-3 row">
+                    <label
+                      for="email"
+                      class="form-label text-success text-center col-3"
+                      >Email:</label
+                    >
+                    <div class="col-9">
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        [class.is-invalid]="email?.invalid && email?.touched"
+                        formControlName="email"
+                      />
+                      <div
+                        *ngIf="email?.invalid && email?.touched"
+                        class="text-center"
+                      >
+                        <small class="text-danger"
+                          >Email is incorrect or not provided</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-3 row">
+                    <label
+                      for="password"
+                      class="form-label text-success text-center col-3"
+                      >Password:</label
+                    >
+                    <div class="col-9">
+                      <input
+                        type="password"
+                        class="form-control form-control-sm"
+                        [class.is-invalid]="
+                          password?.invalid && password?.touched
+                        "
+                        formControlName="password"
+                      />
+                      <div
+                        *ngIf="password?.invalid && password?.touched"
+                        class="text-center"
+                      >
+                        <small class="text-danger">Password is too short or not provided</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-3 row">
+                    <label
+                      for="confirmPassword"
+                      class="form-label text-success text-center col-3"
+                      >Confirm Password:</label
+                    >
+                    <div class="col-9">
+                      <input
+                        type="password"
+                        [class.is-invalid]="confirmPassword?.touched && confirmPassword?.value !== password?.value"
+                        class="form-control form-control-sm"
+                        formControlName="confirmPassword"
+                      />
+                      <div
+                        *ngIf="confirmPassword?.touched && confirmPassword?.value !== password?.value"
+                        class="text-center"
+                      >
+                        <small class="text-danger">Password does not match</small>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="text-end me-3 mb-3">
+                <button
+                  type="button"
+                  class="btn btn-sm btn-outline-success"
+                  (click)="modal.close('Save click')"
+                >
+                  Sign up
+                </button>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+</div>
