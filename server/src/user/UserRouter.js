@@ -32,7 +32,10 @@ router.post(
     .withMessage(tr.password_null)
     .bail()
     .isLength({ min: 4, max: 32 })
-    .withMessage(tr.password_size),
+    .withMessage(tr.password_size)
+    .bail()
+    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).*$/)
+    .withMessage(tr.password_pattern),
   async (req, res, next) => {
     // Check for errors on the req fields
     const errors = validationResult(req);

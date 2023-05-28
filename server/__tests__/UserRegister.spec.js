@@ -67,6 +67,12 @@ describe("User Registration", () => {
     ${"password"}  | ${null}            | ${tr.password_null}
     ${"password"}  | ${"usr"}           | ${tr.password_size}
     ${"password"}  | ${"a".repeat(33)}  | ${tr.password_size}
+    ${"password"}  | ${"alllowercase"}  | ${tr.password_pattern}
+    ${"password"}  | ${"ALLUPPERCASE"}  | ${tr.password_pattern}
+    ${"password"}  | ${"1234567890"}    | ${tr.password_pattern}
+    ${"password"}  | ${"lowerandUPPER"} | ${tr.password_pattern}
+    ${"password"}  | ${"lower4nd5667"}  | ${tr.password_pattern}
+    ${"password"}  | ${"UPPER44444"}    | ${tr.password_pattern}
   `(
     "returns $message when $field is $value",
     async ({ field, value, message }) => {
@@ -98,5 +104,5 @@ describe("Error Model", () => {
     const response = await postUser({ ...validUser, firstName: null });
     expect(response.body.timestamp).toBeGreaterThan(nowInMillis);
     expect(response.body.timestamp).toBeLessThan(FiveSecondsLater);
-  })
+  });
 });
